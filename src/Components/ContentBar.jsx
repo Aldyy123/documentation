@@ -6,9 +6,8 @@ const ContentBar = ({ defaultLinkData, DefaultComponent, LinksContext }) => {
   const linksData = useContext(LinksContext);
 
   const linkNow = linksData.findIndex((value, index) => {
-    if (value.link === url.pathname) {
-      return { ...value, index };
-    }
+    if (value.link !== url.pathname) return false;
+    else return index;
   });
   return (
     <>
