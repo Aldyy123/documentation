@@ -1,0 +1,128 @@
+.section-home {
+  background: url("https://demo.gethugothemes.com/dot/site/images/banner.jpg")
+    no-repeat;
+  position: relative;
+  text-align: center;
+  padding: 100px;
+}
+.section-home::after {
+  background-color: rgba(6, 132, 235, 0.9);
+  left: 0;
+  top: 0;
+  content: "";
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  position: absolute;
+}
+.container {
+  padding: 20px;
+}
+.container-2{
+  margin: 50px;
+}
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1px 3px grey;
+  padding: 10px 20px;
+}
+.navbar-header a {
+  color: black;
+  text-decoration: none;
+}
+.navbar-header .navbar{
+  display: flex;
+}
+.navbar-header .navbar .dropdown {
+  z-index: 99999999999;
+  display: block;
+  position: relative;
+}
+.navbar-header .navbar .dropdown button {
+  outline: none;
+  border: none;
+  transition: all 0.5s ease;
+  background: transparent;
+}
+.navbar-header .navbar a {
+  margin: 10px;
+}
+.navbar-header .navbar .dropdown .dropdown-item {
+  z-index: 999;
+  display: none;
+  position: absolute;
+  left: -70px!important;
+  width: auto !important;
+  transition: all 0.5s ease;
+}
+
+.navbar-header .navbar button:hover ~ .dropdown-item,
+.navbar-header .navbar .dropdown .dropdown-item:hover {
+  background-color: grey;
+  display: block;
+}
+.navbar-header .navbar .dropdown .dropdown-item a {
+  display: block;
+  color: white;
+  z-index: 10 !important;
+  text-align: center;
+  left: -5px;
+}
+.burger{
+  display: none;
+}
+
+@media only screen and (max-width: 650px) {
+  .burger{
+    display: block;
+    cursor: pointer;
+  }
+  .navbar-header .navbar{
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px grey;
+    z-index: 10!important;
+    left: 0;
+    display: none;
+    transition: all 0.5s ease;
+    visibility: hidden;
+    width: 100%;
+    top: 2.8rem;
+  }
+  .navbar-header .navbar a{
+    display: block;
+  }
+  .animation-navbar{
+    display: block!important;
+    visibility: visible!important;
+    transition: all 0.5s ease;
+  }
+  .container-2{
+    margin: 50px 0;
+  }
+  .navbar-header .navbar .dropdown .dropdown-item {
+    z-index: 999;
+    position: absolute;
+    width: 100% !important;
+    transition: all 0.5s ease;
+    left: 0 !important;
+  }
+}
+
+@keyframes navbarcollapse {
+  from{
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+  to{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}
