@@ -48,6 +48,10 @@
   border: none;
   transition: all 0.5s ease;
   background: transparent;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
 }
 .navbar-header .navbar a {
   margin: 10px;
@@ -58,13 +62,14 @@
   position: absolute;
   left: -70px!important;
   width: auto !important;
-  transition: all 0.5s ease;
+  transition: display 0.5s;
 }
 
 .navbar-header .navbar button:hover ~ .dropdown-item,
 .navbar-header .navbar .dropdown .dropdown-item:hover {
   background-color: grey;
   display: block;
+  transition: display 0.5s;
 }
 .navbar-header .navbar .dropdown .dropdown-item a {
   display: block;

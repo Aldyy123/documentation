@@ -28,11 +28,11 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-          <span className="burger" onClick={() => {
+          <button style={{border: 'none', background: 'transparent'}} className="burger" onClick={() => {
               setCollapse(!collapse)
           }}>
             <IoMenu />
-          </span>
+          </button>
       </header>
     </>
   );

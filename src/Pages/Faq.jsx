@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../Components/Footer";
 import AccordianItem from "../Components/AccordianItem";
 import { Container, Grid } from "@mui/material";
+import {Helmet} from 'react-helmet'
 const panels = [
   {
     label: "Seriously, Don't Use Icon Fonts",
@@ -34,6 +35,9 @@ const Faq = () => {
   const [clickActive, setClickActive] = React.useState(-1);
   return (
     <>
+    <Helmet>
+      <title>Faq</title>
+    </Helmet>
       <Container maxWidth={"md"} style={{marginTop: '5rem'}}>
         <Grid item>
           <h2>Frequently Asked Questions</h2>

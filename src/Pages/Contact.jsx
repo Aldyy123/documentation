@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import styled from "@emotion/styled";
 import Footer from "../Components/Footer"
+import {Helmet} from 'react-helmet'
 
 const Input = styled.input({
   padding: "15px 10px",
@@ -31,6 +32,9 @@ const Button = styled.button({
 const Contact = () => {
   return (
     <>
+    <Helmet>
+      <title>Contact</title>
+    </Helmet>
       <Container maxWidth={"md"} style={{marginTop: '5rem'}}>
         <Grid xs={11} item md={12}>
           <h1>Got Any Questions</h1>
