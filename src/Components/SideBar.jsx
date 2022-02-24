@@ -1,15 +1,28 @@
 import React from "react";
 import { Card } from "@mui/material";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IoReturnUpBack } from "react-icons/io5";
 import styled from "@emotion/styled";
 const texDecoration = {
-  textDecoration: "none"
-}
+  textDecoration: "none",
+};
+const unActiveStyle = {
+  color: "blue",
+  ...texDecoration
+};
+const activeStyle = {
+  color: "red",
+  ...texDecoration
+};
 
 const Nav = ({ className, label, link }) => (
   <li className={className}>
-    <Link style={texDecoration} to={link}>{label}</Link>
+    <NavLink
+      style={({ isActive }) => (isActive ? activeStyle : unActiveStyle)}
+      to={link}
+    >
+      {label}
+    </NavLink>
   </li>
 );
 const SideNav = styled(Nav)`
@@ -21,17 +34,26 @@ const SideBar = ({ defaultLinkData, multipleLinksData }) => {
     <>
       <Card>
         <li style={{ listStyle: "none", margin: "10px" }}>
-          <Link
+          <NavLink
             to={defaultLinkData.link}
-            style={{ display: "flex", alignItems: "center", margin: "10px", ...texDecoration }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              margin: "10px",
+              ...texDecoration,
+            }}
           >
             <IoReturnUpBack size={30} />
             <span style={{ marginLeft: "10px" }}>{defaultLinkData.label}</span>
-          </Link>
+          </NavLink>
         </li>
         <ul>
-          {multipleLinksData.map((value, index) => (
-            <SideNav label={value.label} link={value.link} key={index} />
+          {multipleLinksData?.map((value, index) => (
+            <SideNav
+              label={value.label}
+              link={defaultLinkData.link + value.url}
+              key={index}
+            />
           ))}
         </ul>
       </Card>

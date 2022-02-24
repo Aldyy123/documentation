@@ -38,7 +38,7 @@ const Contact = () => {
       <Container maxWidth={"md"} style={{marginTop: '5rem'}}>
         <Grid xs={11} item md={12}>
           <h1>Got Any Questions</h1>
-          <h6>Submit the form and confirm your email address at Formspree.</h6>
+          <h4>Submit the form and confirm your email address at Formspree.</h4>
           <Input placeholder="Name" />
           <Input placeholder="Email" />
           <Input placeholder="Subject" />

@@ -1,9 +1,8 @@
 import Home from "./Pages/Home";
 import Faq from "./Pages/Faq";
 import Contact from "./Pages/Contact";
-import Installation from "./Pages/Docs/Installation";
-import Configuration from "./Components/Docs/Installation/Configuration"
-
+import Documentation from "./Pages/Documentation";
+import ContentDocument from "./Components/ContentDocument"
 const routes = [
   {
     path: "/",
@@ -18,12 +17,12 @@ const routes = [
     element: <Contact />,
   },
   {
-    path: "/installation",
-    element: <Installation />,
+    path: "/documentation",
+    element: <Documentation />,
     children: [
       {
-        path: "configuration",
-        element: <Configuration />,
+        path: ":id",
+        element: <ContentDocument />,
       }
     ]
   }

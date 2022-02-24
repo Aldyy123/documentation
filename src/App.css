@@ -1,12 +1,12 @@
 .section-home {
   background: url("https://demo.gethugothemes.com/dot/site/images/banner.jpg")
-    no-repeat;
+    no-repeat center bottom 100%;
   position: relative;
   text-align: center;
   padding: 100px;
 }
 .section-home::after {
-  background-color: rgba(6, 132, 235, 0.9);
+  background-color: rgba(55, 74, 182, 0.6);
   left: 0;
   top: 0;
   content: "";
@@ -19,7 +19,7 @@
 .container {
   padding: 20px;
 }
-.container-2{
+.container-2 {
   margin: 50px;
 }
 .navbar-header {
@@ -35,42 +35,66 @@
   color: black;
   text-decoration: none;
 }
-.navbar-header .navbar{
+.navbar-header .navbar {
   display: flex;
+  opacity: 1;
 }
 .navbar-header .navbar .dropdown {
   z-index: 99999999999;
   display: block;
   position: relative;
 }
-.navbar-header .navbar .dropdown button {
-  outline: none;
-  border: none;
-  transition: all 0.5s ease;
-  background: transparent;
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 10px;
+.navbar-header .navbar .dropdown > a {
+  vertical-align: middle;
+}
+.navbar-header .navbar .dropdown > a:hover ~ .dropdown-item,
+.dropdown-item {
+  visibility: visible;
 }
 .navbar-header .navbar a {
   margin: 10px;
 }
 .navbar-header .navbar .dropdown .dropdown-item {
   z-index: 999;
-  display: none;
+  display: block;
+  background-color: grey;
+  visibility: hidden;
   position: absolute;
-  left: -70px!important;
+  left: -50px !important;
   width: auto !important;
-  transition: display 0.5s;
+  top: auto;
+  transition: display 0.5s ease-in-out;
 }
-
-.navbar-header .navbar button:hover ~ .dropdown-item,
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+.social {
+  display: block;
+  margin: auto 0;
+}
+/* .dropdown .dropdown-item .entering{
+  background-color: grey;
+  display: none!important;
+}
+.dropdown .dropdown-item .entered {
+  background-color: grey;
+  display: block!important;
+}
+.dropdown .dropdown-item .exiting{
+  background-color: grey;
+  display: block!important;
+}
+.dropdown .dropdown-item .exited {
+  background-color: grey;
+  display: none!important;
+} */
+/* .navbar-header .navbar .btn-dropwdown:hover ~ .dropdown-item,
 .navbar-header .navbar .dropdown .dropdown-item:hover {
   background-color: grey;
   display: block;
   transition: display 0.5s;
-}
+} */
 .navbar-header .navbar .dropdown .dropdown-item a {
   display: block;
   color: white;
@@ -78,36 +102,47 @@
   text-align: center;
   left: -5px;
 }
-.burger{
+.burger {
   display: none;
 }
 
 @media only screen and (max-width: 650px) {
-  .burger{
+  .section-home {
+    text-align: center;
+    padding: 40px 10px;
+  }
+  .title-home {
+    font-size: 12px;
+  }
+  .burger {
     display: block;
     cursor: pointer;
   }
-  .navbar-header .navbar{
+  .navbar-header .navbar {
     position: absolute;
     background-color: #fff;
     box-shadow: 0 0 10px grey;
-    z-index: 10!important;
+    z-index: 10 !important;
     left: 0;
-    display: none;
-    transition: all 0.5s ease;
-    visibility: hidden;
     width: 100%;
     top: 2.8rem;
+    opacity: 0;
+    display: block;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    padding: 0px;
+    visibility: hidden;
   }
-  .navbar-header .navbar a{
+  .navbar-header .navbar a {
     display: block;
   }
-  .animation-navbar{
-    display: block!important;
-    visibility: visible!important;
+  .animation-navbar {
+    display: block !important;
+    visibility: visible !important;
     transition: all 0.5s ease;
+    animation: navbarcollapse 1s;
+    opacity: 0;
   }
-  .container-2{
+  .container-2 {
     margin: 50px 0;
   }
   .navbar-header .navbar .dropdown .dropdown-item {
@@ -115,17 +150,48 @@
     position: absolute;
     width: 100% !important;
     transition: all 0.5s ease;
+    top: 100%;
     left: 0 !important;
+  }
+  .footer {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .navbar.entering {
+    opacity: 0.5;
+  }
+  .navbar.entered {
+    opacity: 1!important;
+    visibility: visible!important;
+  }
+  .navbar.exiting {
+    opacity: 0.5;
+  }
+  .navbar.exited {
+    opacity: 0!important;
+    visibility: hidden!important;
+  }
+  .overview{
+    margin: 0!important;
+  }
+  .overview-ul{
+    padding: 5px 10px!important;
+  }
+  .overview-ul a{
+    font-size: 10pt;
   }
 }
 
 @keyframes navbarcollapse {
-  from{
+  from {
     opacity: 0;
     display: none;
     visibility: hidden;
   }
-  to{
+  to {
     display: block;
     visibility: visible;
     opacity: 1;

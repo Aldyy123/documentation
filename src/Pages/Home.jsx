@@ -39,11 +39,12 @@ const Input = styled.input({
     width: "100%",
     height: "100%",
   },
-  "@media (max-width: 600px)": {
-    width: "100%!important",
-    margin: "0!important",
+  "@media only screen and (max-width: 600px)": {
+    width: "10rem!important",
+    margin: "0 auto!important",
+    display: "block!important",
   },
-  "@media (max-width: 900px)": {
+  "@media only screen and (max-width: 900px)": {
     width: "20rem",
   },
 });
@@ -79,7 +80,7 @@ const Home = () => {
             }}
           >
             <h1>Support Center & Knowledge base</h1>
-            <h3>
+            <h3 className="title-home">
               Find advice and answers from our support team fast or get in touch
             </h3>
             <Input
