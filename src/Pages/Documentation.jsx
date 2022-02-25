@@ -17,7 +17,6 @@ const Docs = () => {
     getUrlRoutes()
       .then((querySnapshot) => {
         const temp = [];
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
           const data = { ...doc.data().data, id: doc.id };
           temp.push(data);
