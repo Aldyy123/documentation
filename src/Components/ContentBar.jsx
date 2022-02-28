@@ -1,22 +1,25 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useLocation, Link } from "react-router-dom";
 import { readDocuments } from "../Models/Firestore";
 import { Helmet } from "react-helmet";
+import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 
-const ContentBar = ({ defaultLinkData, DefaultComponent, LinksContext }) => {
+const ContentBar = ({ defaultLinkData, DefaultComponent, LinksContext, title }) => {
   const url = useLocation();
-  const linksData = useContext(LinksContext);
   const [content, setContent] = useState();
 
-  const linkNow = linksData.findIndex((value, index) => {
+  const linkNow = LinksContext?.findIndex((value, index) => {
     if (defaultLinkData.link + value.url === url.pathname) return true;
     else return false;
   });
   useEffect(() => {
-    readDocuments(linksData[linkNow]?.content_id)
-      .then((res) => setContent(res.data()))
+    readDocuments(LinksContext[linkNow]?.content_id)
+      .then((res) => {
+        setContent(res.data())
+        title(res.data())
+      })
       .catch((err) => console.log(err));
-  }, [linksData, linkNow]);
+  }, [LinksContext, linkNow, title]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,16 +28,15 @@ const ContentBar = ({ defaultLinkData, DefaultComponent, LinksContext }) => {
   return (
     <>
       <Helmet>
-        {content ? <title>{content.title}</title> : <title>App</title>}
+        {content ? <title>{content.title}</title> : <title>Documentation</title>}
       </Helmet>
       {url.pathname === defaultLinkData.link ? (
         <>
-          {DefaultComponent}
           <hr />
           <nav style={{ display: "flex", justifyContent: "right" }}>
-            {linksData.length >= 1 ? (
-              <Link to={defaultLinkData.link + linksData[0]?.url}>
-                {linksData[0]?.label}
+            {LinksContext.length >= 1 ? (
+              <Link to={defaultLinkData.link + LinksContext[0]?.url} style={{ display: "flex", alignItems: "center"}}>
+                {LinksContext[0]?.label} <IoArrowForwardOutline size={'18px'} />
               </Link>
             ) : null}
           </nav>
@@ -43,23 +45,25 @@ const ContentBar = ({ defaultLinkData, DefaultComponent, LinksContext }) => {
         <>
           <Outlet context={content} />
           <hr />
-          {linksData?.length >= 1 ? (
+          {LinksContext?.length >= 1 ? (
             <nav style={{ display: "flex", justifyContent: "space-between" }}>
-              {linksData.length >= linkNow ? (
+              {LinksContext.length >= linkNow ? (
                 <Link
                   to={
                     defaultLinkData.link +
-                    (linksData[linkNow - 1] ? linksData[linkNow - 1].url : "")
+                    (LinksContext[linkNow - 1] ? LinksContext[linkNow - 1].url : "")
                   }
+                  style={{ display: "flex", alignItems: "center"}}
                 >
-                  {linksData[linkNow - 1]
-                    ? linksData[linkNow - 1].label
+                  <IoArrowBackOutline size={'18px'} />
+                  {LinksContext[linkNow - 1]
+                    ? LinksContext[linkNow - 1].label
                     : defaultLinkData.label}
                 </Link>
               ) : null}
-              {linksData.length > linkNow + 1 ? (
-                <Link to={defaultLinkData.link + linksData[linkNow + 1].url}>
-                  {linksData[linkNow + 1].label}
+              {LinksContext.length > linkNow + 1 ? (
+                <Link to={defaultLinkData.link + LinksContext[linkNow + 1].url} style={{ display: "flex", alignItems: "center"}}>
+                  {LinksContext[linkNow + 1].label} <IoArrowForwardOutline size={'18px'} />
                 </Link>
               ) : null}
             </nav>

@@ -10,11 +10,6 @@ const Nav = ({ label, link, style }) => (
     </Link>
   </li>
 );
-const styles = {
-  "@media only screen and (max-width: 566px)": {
-    backgroundColor: "red",
-  },
-};
 const Overview = ({ routes, defaultLinkData }) => {
 
   return (
@@ -33,10 +28,11 @@ const Overview = ({ routes, defaultLinkData }) => {
             className="overview-ul"
           >
             {routes.length > 0
-              ? routes.map((route) => (
+              ? routes.map((route, index) => (
                   <Nav
                     link={defaultLinkData.link + route.url}
                     label={route.label}
+                    key={index}
                     style={{ margin: "15px 0" }}
                   />
                 ))

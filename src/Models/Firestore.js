@@ -12,9 +12,10 @@ const readDocuments = async (id) => {
   }
 };
 
-const getUrlRoutes = async (data) => {
+const getUrlRoutes = async () => {
   try {
     return await firestore.collection("routes-documentation")
+    .orderBy('date')
     .get();
   } catch (error) {
     console.log(error);

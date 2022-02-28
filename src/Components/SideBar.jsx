@@ -11,7 +11,7 @@ const unActiveStyle = {
   ...texDecoration
 };
 const activeStyle = {
-  color: "red",
+  color: "#965DE9",
   ...texDecoration
 };
 

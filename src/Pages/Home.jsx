@@ -1,26 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "@emotion/styled";
-import { VscCreditCard } from "react-icons/vsc";
 import Footer from "../Components/Footer";
 import { Helmet } from "react-helmet";
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import LandingDownload from "../Components/LandingDownload";
 
-const Box = styled.div({
-  padding: "15px",
-  textAlign: "center",
-  boxShadow: "0px 0px 5px 2px grey",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  transition: "box-shadow 0.5s ease",
-  ":hover": {
-    boxShadow: "0px 9px 5px 2px grey",
+const styles = {
+  link: {
+    textAlign: "center",
+    padding: "15px 3rem",
+    textDecoration: "none",
+    color: "black",
+    boxShadow: "2px 2px 4px #00000040",
+    borderRadius: "15px",
   },
-});
+};
+
 
 const Input = styled.input({
-  borderRadius: "20px",
   border: "none",
   padding: "10px",
   width: "25rem",
@@ -50,7 +48,7 @@ const Input = styled.input({
 });
 
 const Home = () => {
-  const Grid = styled.div({
+  const GridCustom = styled.div({
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
     gap: "50px",
@@ -64,101 +62,107 @@ const Home = () => {
       gridTemplateColumns: "repeat(2, 1fr)",
     },
   });
-
+  const [query, setQuery] = useState(null)
+  console.log(query)
   return (
     <>
       <Helmet>
         <title>Home</title>
       </Helmet>
-        <section className="section-home">
-          <section
-            style={{
-              zIndex: 1,
-              position: "relative",
-              color: "white",
-              fontWeight: "bold",
-            }}
+      <section className="section-home">
+        <section
+          style={{
+            zIndex: 1,
+            position: "relative",
+            color: "white",
+            fontWeight: "bold",
+          }}
+        >
+          <h1 className="title-home">
+            Mulai dan Cari Solusi Masalah kamu di Halaman Dokumentasi
+          </h1>
+        </section>
+      </section>
+      <Container maxWidth={"md"}>
+        <h1
+          style={{
+            color: "#965DE9",
+            textAlign: "center",
+          }}
+        >
+          Kategori
+        </h1>
+        <Grid item container flexWrap={"wrap"} wrap={"wrap"}>
+          <Grid
+            item
+            md={6}
+            sm={6}
+            xs={12}
+            justifyContent="center"
+            className="grid-link-category"
+            container
           >
-            <h1>Support Center & Knowledge base</h1>
-            <h3 className="title-home">
-              Find advice and answers from our support team fast or get in touch
-            </h3>
-            <Input
-              placeholder={"Have a question? Just ask here or enter terms"}
-            />
-          </section>
-        </section>
-      <Container maxWidth={"lg"}>
-        <section className="container" style={{ textAlign: "center" }}>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id
-            mi sit amet ipsum rhoncus pulvinar. Suspendisse consectetur
-            hendrerit lectus eu molestie. Praesent at est arcu. Praesent
-            tristique turpis massa, quis pellentesque tellus gravida sed. Duis
-            consectetur justo in sodales volutpat. Phasellus pretium egestas
-            ligula id scelerisque. Sed non enim in enim tristique laoreet. Duis
-            mollis nulla tellus, faucibus varius dui vestibulum eget.
-            Pellentesque congue nibh orci, ut ultrices ipsum tincidunt a. Orci
-            varius natoque penatibus et magnis dis parturient montes, nascetur
-            ridiculus mus. Suspendisse auctor elit id magna consequat malesuada.
-            Vivamus euismod urna nunc, at hendrerit eros tincidunt at. Nunc
-            posuere ipsum erat, id aliquet eros interdum quis.
-          </p>
-          <p>
-            Cras condimentum et nibh quis fermentum. Praesent enim nisi,
-            placerat sit amet ex ac, dapibus iaculis nibh. Aliquam dapibus in
-            purus nec ullamcorper. Aliquam in lectus at nisi ornare dictum.
-            Aenean bibendum elit nunc, in dignissim enim ornare eget. Vestibulum
-            ante ipsum primis in faucibus orci luctus et ultrices posuere
-            cubilia curae; Sed at tortor diam. Suspendisse non nunc leo. Nulla
-            facilisi. Integer tristique mauris at risus fringilla maximus. Donec
-            id justo ac diam efficitur vehicula. Morbi nec vestibulum felis,
-            efficitur rhoncus nunc.
-          </p>
-        </section>
-        <section>
-          <h1 style={{ textAlign: "center" }}>Find your answer by subject</h1>
-          <Grid>
-            <Box>
-              <VscCreditCard size={"70px"} />
-              <h3>Instalasion</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos beatae veritatis, ratione culpa esse possimus facere
-                similique? Consectetur, pariatur temporibus repellat harum iste
-                nam sequi voluptates fugit similique maiores. Doloribus?
-              </p>
-            </Box>
-            <Box>
-              <VscCreditCard size={"70px"} />
-
-              <h3>Instalasion</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos beatae veritatis, ratione culpa esse possimus facere
-                similique? Consectetur, pariatur temporibus repellat harum iste
-                nam sequi voluptates fugit similique maiores. Doloribus?
-              </p>
-            </Box>
-            <Box>
-              <VscCreditCard size={"70px"} />
-
-              <h3>Instalasion</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos beatae veritatis, ratione culpa esse possimus facere
-                similique? Consectetur, pariatur temporibus repellat harum iste
-                nam sequi voluptates fugit similique maiores. Doloribus?
-              </p>
-            </Box>
+            <Link style={styles.link} to="/about">
+              Tentang
+            </Link>
           </Grid>
+          <Grid
+            item
+            md={6}
+            sm={6}
+            xs={12}
+            justifyContent="center"
+            className="grid-link-category"
+            container
+          >
+            <Link style={styles.link} to="/documentation">
+              Documentation
+            </Link>
+          </Grid>
+        </Grid>
+        {/* <section>
+          <h1 style={{ textAlign: "center" }}>Find your answer by subject</h1>
+          <GridCustom>
+            <Box>
+              <VscCreditCard size={"70px"} />
+              <h3>Instalasion</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos beatae veritatis, ratione culpa esse possimus facere
+                similique? Consectetur, pariatur temporibus repellat harum iste
+                nam sequi voluptates fugit similique maiores. Doloribus?
+              </p>
+            </Box>
+            <Box>
+              <VscCreditCard size={"70px"} />
+
+              <h3>Instalasion</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos beatae veritatis, ratione culpa esse possimus facere
+                similique? Consectetur, pariatur temporibus repellat harum iste
+                nam sequi voluptates fugit similique maiores. Doloribus?
+              </p>
+            </Box>
+            <Box>
+              <VscCreditCard size={"70px"} />
+
+              <h3>Instalasion</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos beatae veritatis, ratione culpa esse possimus facere
+                similique? Consectetur, pariatur temporibus repellat harum iste
+                nam sequi voluptates fugit similique maiores. Doloribus?
+              </p>
+            </Box>
+          </GridCustom>
         </section>
         <section
           style={{
             textAlign: "center",
             padding: "25px",
             margin: "50px",
-            boxShadow: "0px 0px 3px 3px grey",
+            boxShadow: "0px 0px 10px grey",
           }}
         >
           <h1>Didn’t find an answer to your question?</h1>
@@ -177,9 +181,10 @@ const Home = () => {
           >
             Contact us
           </button>
-        </section>
-        <Footer />
+        </section> */}
       </Container>
+      <LandingDownload />
+      <Footer />
     </>
   );
 };

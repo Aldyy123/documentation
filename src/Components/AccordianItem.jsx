@@ -6,7 +6,7 @@ const AccordianItem = ({ panel, index, click }) => {
   let activeTab = index === clickActive;
   return (
     <>
-      <section style={{ backgroundColor: "#ffff", margin: '10px', boxShadow: '0px 0px 30px rgba(0,0,0,0.5)'}}>
+      <section style={{ backgroundColor: "#ffff", margin: '10px', boxShadow: '0px 0px 5px rgba(0,0,0,0.5)'}}>
         <div
           style={{
             padding: "5px 20px",
